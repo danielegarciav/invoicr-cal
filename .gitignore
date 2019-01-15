@@ -1,0 +1,5 @@
+pyenv
+__pycache__
+gcal_credentials
+test_generated_content
+invoicr_settings.json
