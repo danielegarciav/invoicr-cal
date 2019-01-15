@@ -14,12 +14,15 @@ SCOPES = 'https://www.googleapis.com/auth/calendar'
 
 class GCalWrapper():
     def __init__(self):
+        if not os.path.isfile(TOKEN_FILE):
+            raise(FileNotFoundError("{} was not found".format(TOKEN_FILE)))
+
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.
-        self.store = file.Storage('gcal_credentials/token.json')
+        self.store = file.Storage(TOKEN_FILE)
         self.creds = self.store.get()
         if not self.creds or self.creds.invalid:
-            self.flow = client.flow_from_clientsecrets('gcal_credentials/credentials.json', SCOPES)
+            self.flow = client.flow_from_clientsecrets(CRED_FILE, SCOPES)
             self.creds = tools.run_flow(self.flow, self.store)
         self.service = build('calendar', 'v3', http=self.creds.authorize(Http()))
