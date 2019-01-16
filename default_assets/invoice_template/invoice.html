@@ -3,7 +3,7 @@
 <head>
     <title>Invoice</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="./invoice.css" media="all" rel="stylesheet" type="text/css">
+    <link href="./{{ title }}.css" media="all" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
             <h1>Invoice</h1>
         </header>
         <section>
-            <p>Wasssuh</p>
+            <p>Generated using Invoicr</p>
         </section>
         <section>
             <table>
@@ -24,16 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for item in items -%}
                     <tr>
-                        <td>MGT262 Slide Upload</td>
-                        <td class="text-right">0.5</td>
-                        <td class="text-right">$8.00</td>
+                        <td>{{ item.title }}</td>
+                        <td class="text-right">{{ item.hours }}</td>
+                        <td class="text-right">{{ item.price }}</td>
                     </tr>
-                    <tr>
-                        <td>MGT262 Slide Content Extraction</td>
-                        <td class="text-right">10</td>
-                        <td class="text-right">$160.00</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
