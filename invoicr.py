@@ -1,14 +1,15 @@
 import helpers.ExceptionHandling
 import json
-import pymongo
 import datetime
 from helpers.GCalWrapper import GCalWrapper
 from helpers.ChromePrintToPDF import print_to_pdf
+
 
 def tgc(filename: str) -> str:
     """ Get filename with test generated content path appended. """
     TGC_FOLDER = "test_generated_content"
     return "{}/{}".format(TGC_FOLDER, filename)
+
 
 class InvoicrModel:
     SETTINGS_FILE = 'invoicr_settings.json'
@@ -61,7 +62,7 @@ class InvoicrModel:
             print("Timelog calendar not found")
             print("Check your settings and try again")
             return
-        
+
         print("Getting events")
         events = self.get_timelog_events()
 
