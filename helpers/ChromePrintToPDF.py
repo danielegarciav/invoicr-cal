@@ -31,7 +31,8 @@ def print_to_pdf(input_path: str, output_path: str, overwrite: bool = True) -> b
 
     with open(BAT_NAME, 'w') as bat:
         bat.write('@echo off\n')
-        bat.write(line)
+        bat.write(line + '\n')
+        bat.write('(goto) 2>nul & del "%~f0"')
 
     with open(os.devnull, 'w') as fnull:
         subprocess.call([BAT_NAME], stdout=fnull, stderr=fnull)
