@@ -1,6 +1,6 @@
 import sys
 
-DEBUG_FLAG = False
+DEBUG_FLAG = True
 SIMPLE_EXCEPT = False
 
 
