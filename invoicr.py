@@ -2,6 +2,7 @@ import helpers.ExceptionHandling
 import json
 import datetime
 from helpers.GCalWrapper import GCalWrapper
+from helpers.InvoiceBuilder import InvoiceBuilder
 from helpers.ChromePrintToPDF import print_to_pdf
 
 
@@ -65,6 +66,24 @@ class InvoicrModel:
 
         print("Getting events")
         events = self.get_timelog_events()
+
+        # For testing purposes
+        print("Generating HTML file")
+        InvoicrModel.test_generate_files()
+        print("Generating PDF file")
+        InvoicrModel.test_print_to_pdf()
+
+    @classmethod
+    def test_generate_files(cls):
+        ib = InvoiceBuilder()
+        items = [{'title': 'Item 1', 'hours': '0.5', 'price': '$8.00'},
+                 {'title': 'Item 2', 'hours': '10', 'price': '$160.00'},
+                 {'title': 'Item 3', 'hours': '0.25', 'price': '$4.00'}]
+        ib.generate_files(items)
+
+    @classmethod
+    def test_print_to_pdf(cls):
+        print_to_pdf(InvoiceBuilder.get_html_filename(), tgc('invoice.pdf'))
 
 
 def main():
