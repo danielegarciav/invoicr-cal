@@ -14,7 +14,7 @@ SCOPES = 'https://www.googleapis.com/auth/calendar'
 
 class GCalWrapper():
     def __init__(self):
-        if not os.path.isfile(TOKEN_FILE):
+        if not os.path.isfile(CRED_FILE):
             raise(FileNotFoundError("{} was not found".format(TOKEN_FILE)))
 
         # The file token.json stores the user's access and refresh tokens, and is
