@@ -7,6 +7,7 @@ Script to generate PDF invoices from Google Calendar events
 - Python 3.5 or greater
 - The [pip](https://pypi.python.org/pypi/pip) package management tool
 - A Google account with Google Calendar enabled
+- Google Chrome 59 or greater
 
 ## Setup
 
@@ -61,3 +62,5 @@ python3 invoicr.py
 ## Notice
 
 Invoicr is a work in progress. More documentation is planned.
+
+PDF generation is only implemented for Windows at the moment (in file `helpers/ChromePrintToPDF.py`).
