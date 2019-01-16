@@ -27,7 +27,6 @@ def print_to_pdf(input_path: str, output_path: str, overwrite: bool = True) -> b
             '"file://{}"'.format(html_abs)]
 
     line = ' '.join(args)
-    line = '{q}{l}{q}'.format(q='', l=line)
 
     with open(BAT_NAME, 'w') as bat:
         bat.write('@echo off\n')
